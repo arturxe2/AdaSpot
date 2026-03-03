@@ -26,6 +26,22 @@ def store_json(fpath, obj, pretty=False):
     with open(fpath, 'w') as fp:
         json.dump(obj, fp, **kwargs)
 
+def store_json_inference(out_path, pred, stride = 1):
+    predDict = dict()
+    predDict['predictions'] = []
+    for event in pred['events']:
+        eventDict = dict()
+        frame = int(event['frame']) * stride
+        eventDict['frame'] = frame
+        eventDict['label'] = event['label']
+        eventDict['confidence'] = event['score']
+        predDict['predictions'].append(eventDict)
+
+    if not os.path.exists(out_path):
+        os.makedirs(out_path)
+    with open(out_path + '/results_inference.json', 'w') as fp:
+        json.dump(predDict, fp, indent=4)
+
 def store_json_snb(pred_path, pred, stride = 1):
     for game in pred:
         gameDict = dict()

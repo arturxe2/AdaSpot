@@ -75,6 +75,22 @@ Using a checkpoint:
 
 Note: Reported results in the paper are averaged over three runs with different seeds. The released checkpoints correspond to a single trained model, so minor performance variations may occur.
 
+## Perform inference
+
+You can perform inference on a single video using the `inference.py` script. Run it from the command line as follows:
+
+```
+python3 inference.py --model_name <model_name> --video_path <video_path> --frame_width <frame_width> --inference_threshold <inference_threshold>
+```
+
+For example, to use a pre-trained FineDiving model:
+
+```
+python3 inference.py --model FineDiving_small --video_path /videos/inference_video.mp4
+```
+
+Ensure that the specified trained model is accessible. The inference threshold can be adjusted according to your preference. 
+
 ## Contact
 
 If you have any questions related to the code, feel free to contact arturxe@gmail.com.
