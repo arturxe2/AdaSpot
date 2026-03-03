@@ -1,0 +1,40 @@
+{
+    "paths": {
+        "frame_dir": "/frame/dir",
+        "save_dir": "/save/dir"
+    },
+    "data": {
+        "dataset": "f3set",
+        "num_classes": 1108,
+        "clip_len": 100,
+        "epoch_num_frames": 500000,
+        "mixup": true,
+        "store_mode": "store"
+    },
+    "training":{
+        "batch_size": 4,
+        "num_epochs": 100,
+        "warm_up_epochs": 5,
+        "start_val_epoch": 95,
+        "learning_rate": 0.0008,
+        "only_test": false,
+        "criterion": "map",
+        "num_workers": 8,
+        "lowres_loss": true,
+        "highres_loss": true
+    },
+    "model": {
+        "hr_dim": [448, 796],
+        "hr_crop": [448, 448],
+        "lr_dim": [224, 398],
+        "lr_crop": [224, 224],
+        "roi_size": [112, 112],
+        "feature_arch": "rny002_gsf",
+        "blocks_temporal": [true, true, true, true],
+        "aggregation": "max",
+        "temporal_arch": "gru",
+        "threshold": 0.30,
+        "padding": "replicate"
+
+    }
+}
