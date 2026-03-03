@@ -36,15 +36,14 @@ def dict_to_namespace(d):
     return d
 
 def update_args(args, config):
-    #Update config arguments
-    config['paths']['save_dir'] = config['paths']['save_dir'] + '/' + args.model_name + '-' + str(args.seed) # allow for multiple seeds
 
     #Update arguments with config file
     args.paths = dict_to_namespace(config['paths'])
     args.data = dict_to_namespace(config['data'])
+    args.data.store_dir = args.paths.save_dir + '/store_data'
+    args.paths.save_dir = os.path.join(args.paths.save_dir, args.model_name + '-' + str(args.seed)) # allow for multiple seeds
     args.data.frame_dir = args.paths.frame_dir
     args.data.save_dir = args.paths.save_dir
-    args.data.store_dir = os.path.join(args.paths.save_dir, args.model_name + '-' + str(args.seed))
     args.training = dict_to_namespace(config['training'])
     args.model = dict_to_namespace(config['model'])
     args.model.clip_len = args.data.clip_len

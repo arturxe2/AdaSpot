@@ -1,0 +1,16 @@
+# Deep learning
+torch>=1.12.0
+torchvision>=0.13.0
+timm
+
+# Video / datasets / progress
+opencv-python
+tqdm
+numpy
+
+# Visualization / reporting
+matplotlib
+tabulate
+
+# SoccerNet evaluation
+SoccerNet
